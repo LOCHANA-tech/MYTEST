@@ -7,8 +7,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app import app
 
 # Vercel requires a handler function
-def handler(request):
-    return app(request.environ, start_response)
+def handler(environ, start_response):
+    return app(environ, start_response)
 
 # For local testing
 if __name__ == '__main__':
