@@ -1,14 +1,28 @@
-/* Custom styles for Student Management System */
+/* Custom CSS for Student Management System */
+/* This file contains additional styling that complements Tailwind CSS */
 
 /* Smooth transitions for theme switching */
 * {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Custom scrollbar for dark mode */
-.dark ::-webkit-scrollbar {
+/* Custom scrollbar styling for dark mode */
+::-webkit-scrollbar {
     width: 8px;
     height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .dark ::-webkit-scrollbar-track {
@@ -17,7 +31,6 @@
 
 .dark ::-webkit-scrollbar-thumb {
     background: #6b7280;
-    border-radius: 4px;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
@@ -25,150 +38,71 @@
 }
 
 /* Focus styles for better accessibility */
-input:focus, textarea:focus, select:focus {
+input:focus, button:focus, select:focus, textarea:focus {
     outline: 2px solid #3b82f6;
     outline-offset: 2px;
 }
 
-/* Custom button hover effects */
-.btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+/* Custom animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
-}
-
-.btn-danger {
-    @apply bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
-}
-
-/* Dark mode button variants */
-.dark .btn-primary {
-    @apply bg-primary-700 hover:bg-primary-800;
-}
-
-.dark .btn-secondary {
-    @apply bg-gray-600 hover:bg-gray-700 text-white;
-}
-
-.dark .btn-danger {
-    @apply bg-red-700 hover:bg-red-800;
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
 }
 
 /* Table row hover effects */
 .table-row-hover {
-    @apply hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150;
+    transition: all 0.2s ease;
 }
 
-/* Loading spinner animation */
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+.table-row-hover:hover {
+    transform: translateX(2px);
 }
 
-.animate-spin {
+/* Button hover effects */
+.btn-hover {
+    transition: all 0.2s ease;
+}
+
+.btn-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading spinner */
+.loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
     animation: spin 1s linear infinite;
 }
 
-/* Notification animations */
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-}
-
-.notification-enter {
-    animation: slideIn 0.3s ease-out;
-}
-
-.notification-exit {
-    animation: slideOut 0.3s ease-in;
-}
-
-/* Form validation styles */
-.input-error {
-    @apply border-red-500 dark:border-red-400;
-}
-
-.input-error:focus {
-    @apply ring-red-500 dark:ring-red-400;
-}
-
-.error-message {
-    @apply text-red-600 dark:text-red-400 text-sm mt-1;
-}
-
-/* Success message styles */
-.success-message {
-    @apply text-green-600 dark:text-green-400 text-sm mt-1;
-}
-
-/* Custom card styles */
-.card {
-    @apply bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-200 dark:border-gray-700;
-}
-
-.card-header {
-    @apply px-4 py-5 sm:p-6 border-b border-gray-200 dark:border-gray-700;
-}
-
-.card-body {
-    @apply px-4 py-5 sm:p-6;
-}
-
-/* Responsive text sizes */
+/* Responsive adjustments */
 @media (max-width: 640px) {
-    .text-responsive {
-        font-size: 0.875rem;
-    }
-}
-
-/* Custom modal backdrop */
-.modal-backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-}
-
-/* Focus visible for better keyboard navigation */
-.focus-visible\:ring-2:focus-visible {
-    outline: 2px solid #3b82f6;
-    outline-offset: 2px;
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-    .btn-primary {
-        @apply border-2 border-primary-800;
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     
-    .btn-danger {
-        @apply border-2 border-red-800;
-    }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        transition: none !important;
-        animation: none !important;
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
@@ -178,11 +112,13 @@ input:focus, textarea:focus, select:focus {
         display: none !important;
     }
     
-    .print-break-before {
-        page-break-before: always;
+    body {
+        background: white !important;
+        color: black !important;
     }
     
-    .print-break-after {
-        page-break-after: always;
+    .bg-white, .dark .bg-gray-800 {
+        background: white !important;
+        color: black !important;
     }
 }
