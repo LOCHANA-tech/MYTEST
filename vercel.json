@@ -1,0 +1,18 @@
+{
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "(.*)",
+      "dest": "/api/index.py"
+    }
+  ],
+  "env": {
+    "SUPABASE_URL": "https://yckxqefpsersuarvewvl.supabase.co",
+    "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlja3hxZWZwc2Vyc3VhcnZld3ZsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc4MjExNjIsImV4cCI6MjA3MzM5NzE2Mn0.Yz5hlqCLFqPIKVMTWnlYw68bA_LfjV2vK_Xw5O6nXY4"
+  }
+}
